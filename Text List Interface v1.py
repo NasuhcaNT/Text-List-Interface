@@ -2,9 +2,9 @@
 """
 Created on Sat Dec 30 21:48:57 2023
 
-@author: ASUS
+@author: NASUS
 """
-# import os
+
 import sys
 from pynput.mouse import Listener, Button
 import pyautogui as pya
@@ -155,28 +155,6 @@ def add_to_list(window):
 
     except Exception as e:
         window.error_label.setText(f"An error occurred: {str(e)}")
-
-
-# def check_word_in_file(clicked_text, file_path):
-#     clicked_text = clicked_text.lower()  # Kelimeyi küçük harflere dönüştür
-#     try:
-#         window.error_label.setText("")
-#         with open(file_path, "r", encoding="utf-8") as dosya:
-#             # print("kelime",clicked_text)
-#             for satir in dosya:
-#                 veri = satir.strip().split(":")
-#                 if veri[0] == clicked_text:
-#                     # print(f"{clicked_text} kelimesinin anlamı: {veri[1]}")
-#                     window.list_widget.clear()
-#                     window.turkish_translation_label.clear()
-#                     window.turkish_translation_label.setText(
-#                         f"Turkish Translation: {veri[1]}"
-#                     )
-#                     return veri[1]
-
-#         return False
-#     except Exception as e:
-#         window.error_label.setText(f"An error occurred: {str(e)}")
 
 
 def check_word_in_file(clicked_text):
@@ -1014,7 +992,7 @@ def check_word_in_file(clicked_text):
         "self:kendikendine",
         "hello:selam",
         "hi:selam",
-    ]  # Buraya diğer kelimeleri ekleyin
+    ]  
 
     for item in offline_words:
         eng, tr = item.split(":")
@@ -1040,14 +1018,6 @@ def on_click(x, y, button, pressed, window):
             if not window.is_online:
                 time.sleep(1)
                 clicked_text = double_click_and_copy()
-                # if getattr(sys, "frozen", False):
-                #     # Eğer .exe olarak çalışıyorsa
-                #     application_path = os.path.dirname(sys.executable)
-                # else:
-                #     # Eğer Python interpreter üzerinden çalışıyorsa
-                #     application_path = os.path.dirname(__file__)
-                # # file_path = 'offline_words.txt'
-                # file_path = os.path.join(application_path, "offline_words.txt")
                 if check_word_in_file(clicked_text):
                     # print(f"Word found offline: {clicked_text}")
                     window.list_widget.clear()
